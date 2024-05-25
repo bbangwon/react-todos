@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Checkbox from '@mui/material/Checkbox';
 import CommentIcon from '@mui/icons-material/Comment';
 
-export default function TodoItem({ todo, remove }) {
+export default function TodoItem({ todo, remove, toggle }) {
     const labelId = `checkbox-list-secondary-label-${todo.id}`;
 
     const removeTodo = () => {
@@ -22,14 +22,14 @@ export default function TodoItem({ todo, remove }) {
             }
             disablePadding
         >
-            <ListItemButton role={undefined} dense>
+            <ListItemButton role={undefined} onClick={toggle} dense>
                 <ListItemIcon>
                     <Checkbox
                         edge="start"
                         checked={todo.completed}
                         tabIndex={-1}
                         disableRipple
-                        inputProps={{ 'aria-labelledby': labelId }}
+                        inputProps={{ 'aria-labelledby': labelId }}                         
                     />
                 </ListItemIcon>
                 <ListItemText id={labelId} primary={todo.text} />
