@@ -1,16 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import List from '@mui/material/List';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 
-const initialTodos = [
-    { id: 1, text: '리액트 배우기', completed: false },
-    { id: 2, text: '컴포넌트 스타일링 해보기', completed: true },
-    { id: 3, text: '일정 관리 앱 만들어보기', completed: false }
-];
+const getInitialData = () => {
+    const data = localStorage.getItem('todos');
+    return data ? JSON.parse(data) : [];
+} 
 
 export default function TodoList() {
-    const [todos, setTodos] = useState(initialTodos);
+    const [todos, setTodos] = useState(getInitialData);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos])
+
     const removeTodo = id => {
         setTodos(todos.filter(todo => todo.id !== id));
     };
@@ -38,8 +42,7 @@ return (
                 key={todo.id}
                 remove={removeTodo}
                 toggle={() => toggleTodo(todo.id)} />
-        ))
-        };
+        ))}
         <TodoForm addTodo={addTodo} />
     </List>
 );
