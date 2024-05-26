@@ -23,7 +23,7 @@ export default function TodoForm({ addTodo }) {
             <form onSubmit={handleSubmit}>
                 <TextField
                     id="outlined-basic"
-                    label="Outlined"
+                    label="할일 추가하기"
                     variant="outlined"
                     onChange={handleChange}
                     value={text}

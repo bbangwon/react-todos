@@ -30,7 +30,7 @@ export default function TodoList() {
     const addTodo = (text) => {
         console.log(text);
         setTodos(
-            [...todos, { id: 8, text, completed: false}]
+            [...todos, { id: crypto.randomUUID(), text, completed: false}]
         );
 };
 
