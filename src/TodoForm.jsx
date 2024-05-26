@@ -30,7 +30,7 @@ export default function TodoForm({ addTodo }) {
                     InputProps={{
                         endAdornment:
                             <InputAdorment position="end">
-                                <IconButton edge="end" aria-label="create todo" onClick={addTodo}>
+                                <IconButton edge="end" aria-label="create todo" type="submit">
                                     <Create />
                                 </IconButton>
                             </InputAdorment>
